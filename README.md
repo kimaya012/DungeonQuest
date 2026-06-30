@@ -1,6 +1,6 @@
 # Dungeon Quest
 
-A command-line RPG built in Java for practicing OOP and preparing for the TCS NQT/IPA coding assessment.
+A command-line RPG built in Java for practicing OOP and preparing for the TCS IPA coding assessment.
 
 ## Tech Stack
 

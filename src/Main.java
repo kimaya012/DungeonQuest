@@ -13,12 +13,7 @@ public class Main{
 
         while (hero.isAlive() && goblin.isAlive()) {
             hero.attack(goblin);
-
-            System.out.println();
-            System.out.println(hero.getName() + " HP " + hero.getHp());
-            System.out.println(goblin.getName() + " HP: " + goblin.getHp());
-
-            System.out.println("-------------------------");
+            displayHealth(hero, goblin);
 
             if (!goblin.isAlive()) {
 
@@ -27,14 +22,7 @@ public class Main{
             }
 
             goblin.attack(hero);
-
-            System.out.println();
-
-            System.out.println(hero.getName() + " HP: " + hero.getHp());
-
-            System.out.println(goblin.getName() + " HP: " + goblin.getHp());
-
-            System.out.println("-------------------------");
+            displayHealth(hero, goblin);
 
         }
 
@@ -50,6 +38,13 @@ public class Main{
 
         }
 
+    }
+
+    private static void displayHealth(Player hero, Player goblin){
+        System.out.println();
+        System.out.println(hero.getName() + " HP: " + hero.getHp());
+        System.out.println(goblin.getName() + " HP: " + goblin.getHp());
+        System.out.println("-------------------------");
     }
 
 }

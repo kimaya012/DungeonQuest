@@ -8,6 +8,48 @@ public class Main{
 
         System.out.println(hero);
         System.out.println(goblin);
+        
+        System.out.println("\n========== BATTLE START ==========\n");
+
+        while (hero.isAlive() && goblin.isAlive()) {
+            hero.attack(goblin);
+
+            System.out.println();
+            System.out.println(hero.getName() + " HP " + hero.getHp());
+            System.out.println(goblin.getName() + " HP: " + goblin.getHp());
+
+            System.out.println("-------------------------");
+
+            if (!goblin.isAlive()) {
+
+                break;
+
+            }
+
+            goblin.attack(hero);
+
+            System.out.println();
+
+            System.out.println(hero.getName() + " HP: " + hero.getHp());
+
+            System.out.println(goblin.getName() + " HP: " + goblin.getHp());
+
+            System.out.println("-------------------------");
+
+        }
+
+        System.out.println();
+
+        if (hero.isAlive()) {
+
+            System.out.println(hero.getName() + " wins!");
+
+        } else {
+
+            System.out.println(goblin.getName() + " wins!");
+
+        }
+
     }
-    
+
 }

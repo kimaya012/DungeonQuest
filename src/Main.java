@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import entities.*;
 import java.util.ArrayList;
+import world.*;
 
 public class Main{
     public static void main(String[] args){
@@ -9,6 +10,9 @@ public class Main{
 
         Player hero = new Player("Knight", 50, 12, 3);
         Monster goblin = new Monster("Goblin", 35, 8, 2);
+
+        Dungeon dungeon = new Dungeon();
+        Room currentRoom = dungeon.getStartingRoom();
 
         ArrayList<String> inventory = new ArrayList<>();
 
@@ -31,6 +35,8 @@ public class Main{
                     System.out.println("attack");
                     System.out.println("status");
                     System.out.println("inventory");
+                    System.out.println("look");
+                    System.out.println("north");
                     System.out.println("help");
                     System.out.println("quit");
                    
@@ -38,6 +44,21 @@ public class Main{
 
                 case "status" :
                     displayHealth(hero, goblin);
+                    break;
+
+                case "look":
+                    currentRoom.displayRoom();
+                    break;
+
+                case "north" :
+                    Room nextRoom = currentRoom.getExit("north");
+
+                    if (nextRoom != null) {
+                        currentRoom = nextRoom;
+                        currentRoom.displayRoom();
+                    } else {
+                        System.out.println("You can't move north.");
+                    }
                     break;
                 
                 case "attack" :

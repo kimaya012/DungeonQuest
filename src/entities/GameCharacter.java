@@ -1,18 +1,18 @@
 package entities;
 
-public abstract class Character{
+public abstract class GameCharacter{
     protected String name;
     protected int hp;
     protected int attack;
     protected int defense;
 
-    public Character(String name, int hp, int attack,int defense){
+    public GameCharacter(String name, int hp, int attack,int defense){
         this.name = name;
         this.hp = hp;
         this.attack = attack;
         this.defense = defense;
     }
-    public abstract void attack(Character target);
+    public abstract void attack(GameCharacter target);
 
     public boolean isAlive(){
         return hp > 0;

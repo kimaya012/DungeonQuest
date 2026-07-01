@@ -1,7 +1,6 @@
 import java.util.Scanner;
-import entities.Player;
-import entities.Monster;
-import entities.Character;
+import entities.*;
+import java.util.ArrayList;
 
 public class Main{
     public static void main(String[] args){
@@ -10,6 +9,11 @@ public class Main{
 
         Player hero = new Player("Knight", 50, 12, 3);
         Monster goblin = new Monster("Goblin", 35, 8, 2);
+
+        ArrayList<String> inventory = new ArrayList<>();
+
+        inventory.add("Health Potion");
+        inventory.add("Wooden Sword");
 
         // System.out.println(hero);
         // System.out.println(goblin);
@@ -26,8 +30,10 @@ public class Main{
                     System.out.println("\nAvailable commands: ");
                     System.out.println("attack");
                     System.out.println("status");
+                    System.out.println("inventory");
                     System.out.println("help");
                     System.out.println("quit");
+                   
                     break;
 
                 case "status" :
@@ -38,11 +44,11 @@ public class Main{
                     displayHealth(hero, goblin);
 
                     if(!hero.isAlive()) {
-                        System.out.println(hero.getName() + "has been defeated!");
+                        System.out.println(hero.getName() + " has been defeated!");
                     }
 
                     if (!goblin.isAlive()) {
-                        System.out.println(goblin.getName() + "has been defeated!");
+                        System.out.println(goblin.getName() + " has been defeated!");
                     }
 
                     if (hero.isAlive() && goblin.isAlive()) {
@@ -53,6 +59,17 @@ public class Main{
                         }
                     } else {
                         System.out.println("The battle is already over.");
+                    }
+                    break;
+
+                case "inventory" :
+                    if (inventory.isEmpty()) {
+                        System.out.println("Inventory is empty.");
+                    } else {
+                        System.out.println("\nInventory: ");
+                        for(int i = 0; i < inventory.size(); i++) {
+                            System.out.println((i+1) + ". " + inventory.get(i));
+                        }
                     }
                     break;
 
@@ -96,7 +113,7 @@ public class Main{
 
     // }
 
-    private static void displayHealth(Character first, Character second){
+    private static void displayHealth(GameCharacter first, GameCharacter second){
         System.out.println();
         System.out.println(first.getName() + " HP: " + first.getHp());
         System.out.println(second.getName() + " HP: " + second.getHp());

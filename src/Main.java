@@ -2,6 +2,7 @@ import java.util.Scanner;
 import entities.*;
 import java.util.ArrayList;
 import world.*;
+import engine.CommandParser;
 
 public class Main{
     public static void main(String[] args){
@@ -26,8 +27,14 @@ public class Main{
         System.out.println("Type 'help' to see available commands.");
 
         while (true) {
-            System.out.println("\n >");
-            String command = sc.nextLine().trim().toLowerCase();
+            System.out.println("\n>");
+            // String command = sc.nextLine().trim().toLowerCase();
+            String[] parts = CommandParser.parse(sc.nextLine());
+            if (parts.length == 0) {
+                continue;
+            }
+
+            String command = parts[0].toLowerCase();
 
             switch (command) {
                 case "help" :
@@ -36,7 +43,7 @@ public class Main{
                     System.out.println("status");
                     System.out.println("inventory");
                     System.out.println("look");
-                    System.out.println("north");
+                    System.out.println("move");
                     System.out.println("help");
                     System.out.println("quit");
                    
@@ -50,14 +57,19 @@ public class Main{
                     currentRoom.displayRoom();
                     break;
 
-                case "north" :
-                    Room nextRoom = currentRoom.getExit("north");
+                case "move" :
+                    if (parts.length < 2) {
+                        System.out.println("Move where?");
+                        break;
+                    }
 
-                    if (nextRoom != null) {
+                    Room nextRoom = currentRoom.getExit(parts[1]);
+
+                    if(nextRoom != null) {
                         currentRoom = nextRoom;
                         currentRoom.displayRoom();
                     } else {
-                        System.out.println("You can't move north.");
+                        System.out.println("You can't move " + parts[1] + ".");
                     }
                     break;
                 

@@ -1,4 +1,5 @@
 package items;
+import entities.Player;
 
 public class Potion extends Item {
     private int healAmount;
@@ -17,4 +18,9 @@ public class Potion extends Item {
         return name + " (Heals " + healAmount + "HP)";
     }
 
+    @Override
+    public void use(Player player) {
+        System.out.println("You used "+ name + ".");
+        player.heal(healAmount);
+    }
 }

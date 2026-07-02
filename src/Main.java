@@ -49,10 +49,12 @@ public class Main{
                     System.out.println("attack");
                     System.out.println("status");
                     System.out.println("inventory");
+                    System.out.println("use");
                     System.out.println("look");
                     System.out.println("move");
                     System.out.println("help");
                     System.out.println("quit");
+
                    
                     break;
 
@@ -78,6 +80,15 @@ public class Main{
                     } else {
                         System.out.println("You can't move " + parts[1] + ".");
                     }
+                    break;
+
+                case "use" :
+                    if (inventory.isEmpty()) {
+                        System.out.println("Inventory is empty.");
+                        break;
+                    }
+                    Item item = inventory.get(0);
+                    item.use(hero);
                     break;
                 
                 case "attack" :

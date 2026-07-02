@@ -1,4 +1,5 @@
 package items;
+import entities.Player;
 
 public class Weapon extends Item {
 
@@ -16,5 +17,10 @@ public class Weapon extends Item {
     @Override
     public String toString() {
         return name + "(+ " + attackBonus + " Attack)";
+    }
+
+    @Override
+    public void use(Player player) {
+        System.out.println("You equipped "+ name + ".");
     }
 }

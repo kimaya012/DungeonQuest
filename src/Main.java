@@ -3,6 +3,9 @@ import entities.*;
 import java.util.ArrayList;
 import world.*;
 import engine.CommandParser;
+import items.Item;
+import items.Potion;
+import items.Weapon;
 
 public class Main{
     public static void main(String[] args){
@@ -15,10 +18,14 @@ public class Main{
         Dungeon dungeon = new Dungeon();
         Room currentRoom = dungeon.getStartingRoom();
 
-        ArrayList<String> inventory = new ArrayList<>();
+        // ArrayList<String> inventory = new ArrayList<>();
+        ArrayList<Item> inventory = new ArrayList<>();
 
-        inventory.add("Health Potion");
-        inventory.add("Wooden Sword");
+        // inventory.add("Health Potion");
+        // inventory.add("Wooden Sword");
+
+        inventory.add(new Potion("Health Potion",20));
+        inventory.add(new Weapon("Wooden Sword", 5));
 
         // System.out.println(hero);
         // System.out.println(goblin);
@@ -27,7 +34,7 @@ public class Main{
         System.out.println("Type 'help' to see available commands.");
 
         while (true) {
-            System.out.println("\n>");
+            System.out.println("\n >");
             // String command = sc.nextLine().trim().toLowerCase();
             String[] parts = CommandParser.parse(sc.nextLine());
             if (parts.length == 0) {
